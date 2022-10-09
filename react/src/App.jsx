@@ -4,14 +4,21 @@ import { Route, Switch } from 'react-router-dom';
 import { login } from 'Redux/actions';
 import styled, { css } from 'styled-components';
 
+import Landing from 'Pages/Landing';
+import Title from 'Pages/Title';
+import Login from 'Pages/Login';
+import Chapter from 'Pages/Chapter';
+import Library from 'Pages/Library';
+import Profile from 'Pages/Profile';
+import Search from 'Pages/Search';
 
-const Landing = React.lazy(() => import('Pages/Landing'));
-const Title = React.lazy(() => import('Pages/Title'));
-const Login = React.lazy(() => import('Pages/Login'));
-const Chapter = React.lazy(() => import('Pages/Chapter'));
-const Library = React.lazy(() => import('Pages/Library'));
-const Profile = React.lazy(() => import('Pages/Profile'));
-const Search = React.lazy(() => import('Pages/Search'));
+// const Landing = React.lazy(() => import('Pages/Landing'));
+// const Title = React.lazy(() => import('Pages/Title'));
+// const Login = React.lazy(() => import('Pages/Login'));
+// const Chapter = React.lazy(() => import('Pages/Chapter'));
+// const Library = React.lazy(() => import('Pages/Library'));
+// const Profile = React.lazy(() => import('Pages/Profile'));
+// const Search = React.lazy(() => import('Pages/Search'));
 
 function App() {
     const dispatch = useDispatch();

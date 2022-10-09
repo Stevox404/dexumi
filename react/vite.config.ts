@@ -5,12 +5,22 @@ import rollupNodePolyFill from 'rollup-plugin-node-polyfills';
 import { defineConfig } from 'vite';
 import svgrPlugin from 'vite-plugin-svgr';
 import viteTsconfigPaths from 'vite-tsconfig-paths';
+import path from 'path';
 
 
 // https://vitejs.dev/config/
+const BUILD_PATH = path.resolve(__dirname, 'build/');
+const baseDir = /^production$/.test(process.env.NODE_ENV || '') ? BUILD_PATH: '';
 export default defineConfig({
+    base: baseDir,
     resolve: {
         alias: {
+            Assets: path.resolve(__dirname, './src/Assets/'),
+            Components: path.resolve(__dirname, './src/Components/'),
+            Pages: path.resolve(__dirname, './src/Pages/'),
+            Redux: path.resolve(__dirname, './src/Redux/'),
+            Utils: path.resolve(__dirname, './src/Utils/'),
+
             util: 'rollup-plugin-node-polyfills/polyfills/util',
             sys: 'util',
             events: 'rollup-plugin-node-polyfills/polyfills/events',
@@ -35,7 +45,9 @@ export default defineConfig({
             vm: 'rollup-plugin-node-polyfills/polyfills/vm',
             zlib: 'rollup-plugin-node-polyfills/polyfills/zlib',
             tty: 'rollup-plugin-node-polyfills/polyfills/tty',
-            domain: 'rollup-plugin-node-polyfills/polyfills/domain'
+            domain: 'rollup-plugin-node-polyfills/polyfills/domain',
+            buffer: 'rollup-plugin-node-polyfills/polyfills/buffer-es6',
+            process: 'rollup-plugin-node-polyfills/polyfills/process-es6'
         }
     },
     optimizeDeps: {
@@ -55,7 +67,8 @@ export default defineConfig({
         }
     },
     build: {
-        outDir: './build',
+        outDir: BUILD_PATH,
+        assetsInlineLimit: 0,
         rollupOptions: {
             plugins: [
                 /// @ts-ignore

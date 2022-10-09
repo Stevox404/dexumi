@@ -2,15 +2,14 @@
   "name": "mangapi",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "electron": "^21.1.0",
-    "express": "^4.18.1"
-  },
   "scripts": {
-    "start": "node backend/index.js",
-    "electron:start": "cd electron && electron .",
-    "react:start": "cd frontend && npm start",
-    "react:build": "cd frontend && npm run build",
+    "start": "electron .",
+    "electron:start": "cd electron && npm start",
+    "react:start": "cd react && npm start",
+    "react:build": "cd react && npm run build",
     "cors-proxy:start": "cd cors-proxy && npm start"
+  },
+  "dependencies": {
+    "electron": "^21.1.0"
   }
 }
