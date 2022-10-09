@@ -55,6 +55,7 @@ export default defineConfig({
         }
     },
     build: {
+        outDir: './build',
         rollupOptions: {
             plugins: [
                 /// @ts-ignore

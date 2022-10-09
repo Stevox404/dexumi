@@ -3,61 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@date-io/moment": "^2.10.11",
-    "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
-    "@esbuild-plugins/node-modules-polyfill": "^0.1.4",
-    "@material-ui/core": "^4.12.2",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.60",
-    "@material-ui/pickers": "^3.3.10",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@vitejs/plugin-react": "^2.1.0",
-    "dexie": "^3.2.0",
-    "express": "^4.18.1",
-    "flitlib": "https://github.com/Stevox404/flitlib",
-    "mangadex-full-api": "https://github.com/Stevox404/mangadex-full-api.git",
-    "moment": "^2.29.1",
-    "notistack": "^1.0.9",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-redux": "^7.2.4",
-    "react-router-dom": "^5.2.0",
-    "react-world-flags": "^1.4.0",
-    "redux": "^4.1.0",
-    "redux-devtools": "^3.7.0",
-    "redux-thunk": "^2.3.0",
-    "rollup-plugin-node-polyfills": "^0.2.1",
-    "socket.io-client": "^2.3.0",
-    "styled-components": "^5.3.0",
-    "vite": "^3.1.6",
-    "vite-plugin-svgr": "^2.2.1",
-    "vite-tsconfig-paths": "^3.5.1",
-    "web-vitals": "^1.1.2"
+    "electron": "^21.1.0",
+    "express": "^4.18.1"
   },
   "scripts": {
     "start": "node backend/index.js",
-    "react:start": "vite --force",
-    "react:build": "vite build",
-    "cors-proxy:start": "cd cors-proxy/ && npm start"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "electron:start": "cd electron && electron .",
+    "react:start": "cd frontend && npm start",
+    "react:build": "cd frontend && npm run build",
+    "cors-proxy:start": "cd cors-proxy && npm start"
   }
 }
