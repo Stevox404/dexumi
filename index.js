@@ -7,7 +7,7 @@ function createWindow() {
         height: 600,
     })
 
-    win.loadFile(path.resolve(__dirname, 'react/build/index.html'))
+    win.loadFile(path.resolve(__dirname, 'build/index.html'))
 }
 
 app.whenReady().then(() => {

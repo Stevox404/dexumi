@@ -54,6 +54,7 @@ function Featured(props) {
                     })).catch(err => console.debug(err))
             )
             mangas = await Promise.all(ftPromises);
+            if(!mangas[0]) throw new Error('Could not fetch featured manga');
             cache.data = mangas;
             cache.save();
         }

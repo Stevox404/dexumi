@@ -7,8 +7,9 @@ import * as serviceWorker from './serviceWorker';
 import { setProxy } from 'mangadex-full-api';
 
 setProxy({
-    url: 'localhost',
-    port: '8080'
+    hostname: 'localhost',
+    port: '8000',
+    path: '/cors-proxy/'
 });
 
 ReactDOM.render(

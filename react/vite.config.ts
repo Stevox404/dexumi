@@ -9,8 +9,8 @@ import path from 'path';
 
 
 // https://vitejs.dev/config/
-const BUILD_PATH = path.resolve(__dirname, 'build/');
-const baseDir = /^production$/.test(process.env.NODE_ENV || '') ? BUILD_PATH: '';
+const BUILD_PATH = path.resolve(__dirname, '../build/');
+const baseDir = /^production$/.test(process.env.NODE_ENV || '') ? BUILD_PATH: '/';
 export default defineConfig({
     base: baseDir,
     resolve: {
@@ -68,7 +68,6 @@ export default defineConfig({
     },
     build: {
         outDir: BUILD_PATH,
-        assetsInlineLimit: 0,
         rollupOptions: {
             plugins: [
                 /// @ts-ignore

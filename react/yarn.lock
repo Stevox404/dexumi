@@ -1591,8 +1591,8 @@ magic-string@^0.26.2:
     sourcemap-codec "^1.4.8"
 
 "mangadex-full-api@https://github.com/Stevox404/mangadex-full-api.git":
-  version "5.13.0"
-  resolved "https://github.com/Stevox404/mangadex-full-api.git#e039a705c48574b0c760373e220e0f431babf1b5"
+  version "5.13.1"
+  resolved "https://github.com/Stevox404/mangadex-full-api.git#f0688eb75746e6351435ba2ccfc0c574f7efcc87"
 
 mdn-data@2.0.14:
   version "2.0.14"

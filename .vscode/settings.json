@@ -1,0 +1,6 @@
+{
+    "npm.exclude": [
+        "**/cors-proxy",
+        "**/react",
+    ],
+}

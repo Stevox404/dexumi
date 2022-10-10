@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "start": "electron .",
+    "server:start": "cd backend && npm start",
     "electron:start": "cd electron && npm start",
     "react:start": "cd react && npm start",
-    "react:build": "cd react && npm run build",
-    "cors-proxy:start": "cd cors-proxy && npm start"
+    "react:build": "cd react && npm run build"
   },
   "dependencies": {
     "electron": "^21.1.0"
-  }
+  },
+  "devDependencies": {}
 }
