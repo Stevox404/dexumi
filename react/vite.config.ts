@@ -10,9 +10,13 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 const BUILD_PATH = path.resolve(__dirname, '../build/');
-const baseDir = /^production$/.test(process.env.NODE_ENV || '') ? BUILD_PATH: '/';
+const baseDir = false && /^production$/.test(process.env.NODE_ENV || '') ? BUILD_PATH: '/';
+
 export default defineConfig({
     base: baseDir,
+    define: {
+        DEV_PROXY_PORT: process.env.npm_package_PROXY_PORT,
+    },
     resolve: {
         alias: {
             Assets: path.resolve(__dirname, './src/Assets/'),

@@ -2,6 +2,7 @@
   "name": "mangapi",
   "version": "0.1.0",
   "private": true,
+  "PROXY_PORT": 8080,
   "scripts": {
     "start": "electron .",
     "server:start": "cd backend && npm start",

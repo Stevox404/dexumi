@@ -7,21 +7,37 @@ const app = express();
 /** @type {import('http').Server} */
 const server = require('http').Server(app);
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || process.env.npm_package_PROXY_PORT || 8000;
 
-server.listen(port, () => {
-    console.info('Server running on port:', port);
-});
+if (require.main === module) {
+    server.listen(port, () => {
+        console.info('Server running on port:', port);
+    });
+}
+
 
 
 
 /**
  * Static files
  */
-const BUILD_PATH = path.resolve(__dirname, '../../build');
+const BUILD_PATH = path.resolve(__dirname, '../build');
 app.use(express.static(BUILD_PATH));
 
 
+
+app.use('/shutdown', async (req, res) => {
+    console.info('Shutting down server');
+    process.on('SIGTERM', () => {
+        console.info('SIGTERM signal received.');
+        console.log('Closing http server.');
+        process.exit(0);
+        // server.close(() => {
+        //     console.log('Http server closed.');
+        // });
+    });
+    process.kill(process.pid, 'SIGTERM');
+})
 
 app.get('/cors-proxy/*', async (req, res) => {
     if (req.method === 'OPTIONS') {
@@ -85,6 +101,7 @@ function withCORS(headers = {}, request) {
  */
 app.get('*', (_req, res) => {
     res.sendFile(`${BUILD_PATH}/index.html`, err => {
+        // return res.send(err);
         if (err) {
             console.error("Error loading index html file: ", err);
             res.sendStatus(500);
