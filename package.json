@@ -1,17 +1,15 @@
 {
-  "name": "mangapi",
-  "version": "0.1.0",
-  "private": true,
-  "PROXY_PORT": 8080,
-  "scripts": {
-    "start": "electron .",
-    "server:start": "cd backend && npm start",
-    "electron:start": "cd electron && npm start",
-    "react:start": "cd react && npm start",
-    "react:build": "cd react && npm run build"
-  },
-  "dependencies": {
-    "electron": "^21.1.0"
-  },
-  "devDependencies": {}
+    "name": "dexumi",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "start": "npm run electron:start",
+        "server:start": "cd backend && npm start",
+        "server:compile": "cd backend && npm run compile",
+        "electron:start": "cd electron && npm start",
+        "react:start": "cd react && npm start",
+        "react:build": "cd react && npm run build"
+    },
+    "dependencies": {},
+    "devDependencies": {}
 }

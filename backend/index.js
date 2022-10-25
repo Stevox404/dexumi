@@ -21,7 +21,7 @@ if (require.main === module) {
 /**
  * Static files
  */
-const BUILD_PATH = path.resolve(__dirname, '../build');
+const BUILD_PATH = path.join(__dirname, 'build');
 app.use(express.static(BUILD_PATH));
 
 

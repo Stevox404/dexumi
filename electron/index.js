@@ -1,8 +1,8 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path');
 const http = require('http');
-const server = require('./backend/index');
-var pjson = require('./package.json');
+const server = require('../backend/index');
+var pjson = require('../package.json');
 
 const PROXY_PORT = pjson.PROXY_PORT;
 

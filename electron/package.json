@@ -1,0 +1,11 @@
+{
+    "name": "dexumi-app",
+    "PROXY_PORT": 8080,
+    "scripts": {
+        "start": "electron ."
+    },
+    "dependencies": {
+        "electron": "^21.2.0"
+    },
+    "devDependencies": {}
+}

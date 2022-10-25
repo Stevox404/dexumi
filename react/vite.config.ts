@@ -9,7 +9,7 @@ import path from 'path';
 
 
 // https://vitejs.dev/config/
-const BUILD_PATH = path.resolve(__dirname, '../build/');
+const BUILD_PATH = path.resolve(__dirname, '../backend/build/');
 const baseDir = false && /^production$/.test(process.env.NODE_ENV || '') ? BUILD_PATH: '/';
 
 export default defineConfig({
