@@ -1,21 +1,23 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path');
-const http = require('http');
-const server = require('../backend/index');
-var pjson = require('../package.json');
+const { spawn, ChildProcess } = require('child_process');
+var pjson = require('./package.json');
 
-const PROXY_PORT = pjson.PROXY_PORT;
+const PORT = pjson.PORT;
 
+
+/** @type {ChildProcess} */
+let server;
 function createWindow() {
-    if (!server.listening) {
-        server.listen(PROXY_PORT, () => {
-            console.info('Server running on port:', PROXY_PORT);
-        });
-    }
-
+    server = spawn('./bin/src/dexumi-backend-linux', {
+        cwd: __dirname,
+        env: {
+            PORT,
+        }
+    });
     const win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        autoHideMenuBar: true,
+        backgroundColor: '#0b0b0b',
         webPreferences: {
             webSecurity: false,
             allowRunningInsecureContent: true,
@@ -23,8 +25,17 @@ function createWindow() {
             preload: path.join(__dirname, "preload.js")
         }
     });
+    win.maximize();
 
-    win.loadURL(`http://localhost:${PROXY_PORT}/`);
+    server.stdout.on('data', fetchView);
+    function fetchView(data) {
+        const str = data.toString();
+        if (/Server running on port/.test(str)) {
+            win.loadURL(`http://localhost:${PORT}/`);
+            server.stdout.off('data', fetchView);
+        }
+    }
+
 }
 
 app.whenReady().then(() => {
@@ -38,8 +49,8 @@ app.whenReady().then(() => {
 })
 
 app.on('window-all-closed', () => {
-    http.get(`http://localhost:${PROXY_PORT}/shutdown`)
+    if (server) server.kill();
     if (process.platform !== 'darwin') {
-        app.quit()
+        app.quit();
     }
 })
