@@ -1,11 +1,21 @@
 {
     "name": "dexumi-app",
+    "description": "Mangadex Client",
+    "version": "0.1.0",
+    "homepage": "https://github.com/Stevox404/dexumi",
+    "author": {
+        "email": "benzstevox@gmail.com",
+        "name": "Ben Steve"
+    },
     "PORT": 8080,
     "scripts": {
-        "start": "electron --trace-warnings ."
+        "start": "electron .",
+        "build": "electron-builder --config build.js",
+        "pack": "electron-builder --config build.js --dir"
     },
-    "dependencies": {
-        "electron": "^21.2.0"
-    },
-    "devDependencies": {}
+    "dependencies": {},
+    "devDependencies": {
+        "electron": "^21.2.0",
+        "electron-builder": "^23.6.0"
+    }
 }

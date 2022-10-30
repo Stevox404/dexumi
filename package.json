@@ -1,6 +1,8 @@
 {
     "name": "dexumi",
+    "description": "Mangadex Client",
     "version": "0.1.0",
+    "author": "Ben Steve",
     "private": true,
     "scripts": {
         "start": "npm run electron:start",

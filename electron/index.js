@@ -1,16 +1,20 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path');
 const { spawn, ChildProcess } = require('child_process');
-var pjson = require('./package.json');
-
-const PORT = pjson.PORT;
+const pkg = require('./package.json');
+const fs = require('fs');
+const PORT = pkg.PORT;
 
 
 /** @type {ChildProcess} */
 let server;
-function createWindow() {
-    server = spawn('./bin/src/dexumi-backend-linux', {
-        cwd: __dirname,
+function createWindow() {        
+    let binPath = path.join(path.dirname(require.main.filename), 'bin');
+    if(!fs.existsSync(binPath)) {
+        binPath = path.join(process.resourcesPath, 'bin');
+    }
+
+    server = spawn(path.join(binPath, 'src/dexumi-backend-linux'), {
         env: {
             PORT,
         }
